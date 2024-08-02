@@ -79,6 +79,10 @@
   div.modal label span + textarea:focus {
     @apply border-blue-300;
   }
+  div.modal label span + input.invalid,
+  div.modal label span + textarea.invalid {
+    @apply border-red-300;
+  }
   div.modal form div:last-child {
     @apply flex justify-end gap-4 flex-nowrap;
   }
