@@ -1,0 +1,82 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  * {
+    @apply outline-none;
+  }
+  h2 {
+    @apply text-3xl;
+  }
+  .btn {
+    @apply ps-3.5 pe-3.5 pt-0.5 pb-0.5 rounded-md;
+  }
+  .btn-primary {
+    @apply border border-sky-400;
+  }
+  .btn-primary:hover,
+  .btn-primary:focus {
+    @apply bg-sky-200 text-black;
+  }
+  .btn-secondary:hover,
+  .btn-secondary:focus {
+    @apply underline underline-offset-4 bg-blue-200 text-black;
+  }
+  article.card {
+    @apply rounded-2xl border-emerald-900 border bg-gray-100 text-gray-700 m-16 p-8 min-w-[400px] max-w-[500px];
+  }
+  article.card header {
+    @apply border-b-2 border-b-slate-500 pt-3 pb-3 flex justify-between;
+  }
+  article.card h3 {
+    @apply font-extrabold;
+  }
+  article.card main {
+    @apply pt-2.5 pb-2.5 min-h-32 max-h-96;
+  }
+  article.card footer {
+    @apply border-t-2 border-t-slate-500 pt-3 flex gap-4 flex-nowrap justify-end;
+  }
+  section.tasklist > header {
+    @apply p-3 uppercase;
+  }
+  section.tasklist > header h2 {
+    @apply flex justify-between;
+  }
+  section.tasklist > header button {
+    @apply text-xl;
+  }
+  section.tasklist main {
+    @apply flex flex-wrap gap-3;
+  }
+  div.modal-overlay {
+    @apply fixed inset-0 bg-gray-500 bg-opacity-75 flex items-center justify-center z-50;
+  }
+  div.modal {
+    @apply bg-white w-[420px] rounded-xl;
+  }
+  div.modal legend {
+    @apply font-extrabold uppercase border-b-2 border-black w-full bg-lime-200 pt-3.5 ps-3.5 pe-3.5 pb-1 rounded-t-xl;
+  }
+  div.modal fieldset div {
+    @apply m-3;
+  }
+  div.modal label {
+    @apply w-full flex justify-between;
+  }
+  div.modal label span {
+    @apply font-semibold;
+  }
+  div.modal label span + input,
+  div.modal label span + textarea {
+    @apply w-10/12 border border-transparent;
+  }
+  div.modal label span + input:focus,
+  div.modal label span + textarea:focus {
+    @apply border-blue-300;
+  }
+  div.modal form div:last-child {
+    @apply flex justify-end gap-4 flex-nowrap;
+  }
+}
