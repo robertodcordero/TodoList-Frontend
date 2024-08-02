@@ -3,7 +3,9 @@
     <div class="modal">
       <form>
         <fieldset>
-          <legend v-t="'task.edit.modalTitle'"></legend>
+          <legend
+            v-t="action == 'add' ? 'task.edit.modalAddTitle' : 'task.edit.modalEditTitle'"
+          ></legend>
           <div>
             <label>
               <span v-t="'task.edit.inputTitleLabel'"></span>
@@ -11,8 +13,8 @@
                 type="text"
                 :maxlength="128"
                 :placeholder="t('task.edit.inputTitlePlaceholder')"
-                :value="model.title"
-                @change="(evt) => (model.title = evt.target.value)"
+                :value="title"
+                @change="(evt) => (title = evt.target.value)"
               />
             </label>
           </div>
@@ -21,8 +23,8 @@
               <span v-t="'task.edit.inputDescriptionLabel'"></span>
               <textarea
                 :placeholder="t('task.edit.inputDescriptionPlaceholder')"
-                :value="model.description"
-                @change="(evt) => (model.description = evt.target.value)"
+                :value="description"
+                @change="(evt) => (description = evt.target.value)"
               ></textarea>
             </label>
           </div>
@@ -40,24 +42,20 @@
 import { useI18n } from 'vue-i18n'
 const { t } = useI18n()
 
-import type { Task } from '@/types/task'
+const title = defineModel<string>('title', { required: true })
+const description = defineModel<string>('description', { required: true })
 
-const model = defineModel<Task>('task', { required: true })
+defineProps<{
+  action: 'add' | 'edit'
+}>()
+
 const emit = defineEmits<{
-  (e: 'accept', task: Task): void
+  (e: 'accept'): void
   (e: 'cancel'): void
 }>()
 
 const acceptHandler = (): void => {
-  emit('accept', {
-    id: model.value.id,
-    title: model.value.title,
-    description: model.value.description,
-    ownerId: '',
-    created: new Date(),
-    isCompleted: false,
-    isDeleted: false
-  })
+  emit('accept')
 }
 </script>
 
