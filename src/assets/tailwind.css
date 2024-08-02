@@ -26,6 +26,9 @@
   article.card {
     @apply rounded-2xl border-emerald-900 border bg-gray-100 text-gray-700 m-16 p-8 min-w-[400px] max-w-[500px];
   }
+  article.disabled {
+    @apply bg-red-100;
+  }
   article.card header {
     @apply border-b-2 border-b-slate-500 pt-3 pb-3 flex justify-between;
   }

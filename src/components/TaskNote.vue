@@ -1,5 +1,10 @@
 <template>
-  <article class="card">
+  <article
+    class="card"
+    :class="{
+      disabled: model.isDeleted
+    }"
+  >
     <header>
       <h3
         :class="{
@@ -15,8 +20,8 @@
       <p v-html="model.description"></p>
     </main>
     <footer>
-      <button class="btn btn-primary" @click="edit(model.id)">Edit</button>
-      <button class="btn btn-secondary" @click="remove(model.id)">Remove</button>
+      <button class="btn btn-primary" @click="edit(model.id)" v-t="'task.card.edit'"></button>
+      <button class="btn btn-secondary" @click="remove(model.id)" v-t="'task.card.remove'"></button>
     </footer>
   </article>
 </template>
@@ -24,6 +29,9 @@
 <script lang="ts" setup>
 import type { Ref } from 'vue'
 import type { Task } from '@/types/task'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 
 const model: Ref<Task> = defineModel<Task>('task', { required: true })
 
